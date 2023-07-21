@@ -4,6 +4,10 @@ import { isAuthenticatedGuard, isNotAuthenticatedGuard} from './auth/guards';
 
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: () => import('./public/public.module').then(m => m.PublicModule),
+  },
+  {
     path: 'auth',
     canActivate: [ isNotAuthenticatedGuard],
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule ),
@@ -15,12 +19,12 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'auth',
+    redirectTo: '',
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
