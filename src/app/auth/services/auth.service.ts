@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { environment } from 'src/environments/environments';
+import { environment } from '../../../environments/environments';
 import { User, AuthStatus, LoginResponse, CheckTokenResponse } from '../interfaces';
 import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
 
